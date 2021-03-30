@@ -9,11 +9,13 @@
     function test1(add)
     {
         console.log(111)
-        add()
+        var a = 111
+        var b = 222
+        add(a,b)
     }
 
-    function test2(){
-        console.log(2222)
+    function test2(num1,num2){
+        console.log(num1+num2)
     }
 
     test1(test2)
