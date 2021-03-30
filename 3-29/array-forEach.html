@@ -6,12 +6,20 @@
 </head>
 <body>
 <script>
-    var arr1 = [22,11,55,66,44,77,99]
-    arr1.forEach(function(v,k){
-        console.log(k,v)
+
+    var obj = {
+        name: "zhangsan",
+        age: 22,
+        email: "zhangsan@qq.com"
+    }
+
+    Object.defineProperty(obj,"sex",{
+        value: 'F',
+        configurable: true,
+        writable: true,
+        enumerable: true
     })
 
-    //sldkfjlskdjflksdjf
 </script>
 </body>
 </html>
