@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //自定义属性
+    var obj1 = {}
+    obj1.age = 11
+
+    Object.defineProperty(obj1,"name",{
+        value: "zhangsan",
+        configurable: false,            //是否能被 delete删除
+        writable: false,                // 是否可以被覆盖写
+        enumerable: false,              //  是否可枚举
+    })
+
+
+    for (k in obj1){
+        console.log(k)
+    }
+    //
+    // console.log(obj1)
+    //
+    // obj1.name = "lisi"
+    // delete obj1.age
+    // delete obj1.name
+    // console.log(obj1)
+
+
+</script>
+</body>
+</html>

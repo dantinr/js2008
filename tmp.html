@@ -6,11 +6,24 @@
 </head>
 <body>
 <script>
-    function add(a,b,c) {
-        console.log(1111)
-    }
 
-    console.log("函数的代码: ",add.toString())
+    function test1(){
+        var a = 111
+        var b = 222
+
+        function add(x,y){
+            a += x
+            b += y
+            console.log(a,b)
+        }
+
+        return add
+    }
+    var fun1 = test1()
+    fun1(10,10)
+
+
+
 </script>
 </body>
 </html>
