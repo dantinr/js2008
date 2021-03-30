@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    //调用先于声明 函数声明提升
+    test1()
+
+    function test1()
+    {
+        console.log(2222)
+    }
+
+    function test1()
+    {
+        console.log(3333)
+    }
+
+
+</script>
+</body>
+</html>
