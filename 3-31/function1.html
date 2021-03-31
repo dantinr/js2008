@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Animal()
+    {
+
+    }
+
+    function Person()
+    {
+
+    }
+
+    // 函数原型  prototype
+
+    //console.log(typeof Animal.prototype)
+    //console.log(Animal.prototype)
+
+    Animal.prototype.age = 11
+    Animal.prototype.say = function(){
+        console.log("Hello Js")
+    }
+
+
+
+    var a1 = new Animal()
+    a1.age = 22
+    console.log(a1.xxx)
+    console.log(a1.age)
+
+
+
+
+</script>
+</body>
+</html>
