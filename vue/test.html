@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+    <div id="app">
+        <ul>
+            <li v-for="item in list" :key="item.key">
+                {{item.combo_id}} - {{item.combo_name}}
+            </li>
+        </ul>
+    </div>
+
+<body>
+    <script src="../vue.js"></script>
+    <script src="../axios.min.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data(){
+                return {
+                    list: null
+                }
+            },
+            mounted(){
+                axios.get("http://vue.api.com/combo/list")
+                .then(response=>{
+                    this.list = response.data.data.list
+                })
+            }
+        })
+    </script>
+</body>
+</html>

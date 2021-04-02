@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+
+    // 键(key) 值(Value)
+
+    let arr1 = ["aa","bb","cc","dd","cc"]
+    let obj1 = {
+        name: "zhangsan",
+        age: 11,
+        sex: "M"
+    }
+    let s1 = new Set([11,22,33,44])
+    console.log(s1.keys())
+    console.log(s1.values())
+    console.log(s1.entries())
+    s1.forEach(function(k,v){
+        console.log(k,v)
+    })
+
+
+
+
+
+    //
+    // let s1 = new Set()
+    // //console.log(Set.prototype)
+    // s1.add(11)
+    // s1.add(99)
+    // s1.add(333)
+    // s1.add(222)
+    // console.log( s1.has(333) )
+    //
+    // console.log(s1)
+    // s1.delete(99)
+    // s1.clear()
+    // console.log(s1)
+</script>
+</body>
+</html>

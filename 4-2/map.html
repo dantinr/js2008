@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    //console.log(Map.prototype)
+
+    let o1 = {
+        type : "human"
+    }
+
+    let o2 = {
+        type: "animal"
+    }
+
+    let m1 = new Map()
+    m1.set(o1,"人类")
+    m1.set(o2,"动物")
+    m1.delete(o2)
+
+    console.log(m1.size)
+
+
+</script>
+</body>
+</html>

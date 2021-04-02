@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // let str = "abcded"
+    //
+    // let s = Symbol()
+    // console.log(s)
+    // console.log(typeof s)
+    // console.log(typeof str)
+
+    let name1 = Symbol("name")
+    let name2 = Symbol("name")
+    let name3 = Symbol("name")
+
+
+
+    let obj1 = {
+        [Symbol("name")]: "zhangsan",
+        age: 22,
+        [Symbol("sex")]: "X"
+    }
+
+    let obj2 = {
+        [Symbol("name")]: "张三",
+        email: "zhangsan@qq.com"
+    }
+
+
+    let obj3 = {
+        [Symbol("name")]: "laozhang",
+        [Symbol("sex")]: "M"
+    }
+
+
+    let o = Object.assign(obj1,obj2,obj3)
+
+    console.log("o",o)
+    console.log("obj1",obj1)
+    console.log("obj2",obj2)
+    console.log("obj3",obj3)
+
+
+</script>
+</body>
+</html>

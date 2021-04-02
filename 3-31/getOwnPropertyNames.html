@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    var obj0 = {
+        xxx: "Hello"
+    }
+
+    var obj2 = Object.create(obj0)
+    obj2.name = "zhangsan"
+
+    Object.defineProperty(obj2,"sex",{
+        value : "F",
+        enumerable : true
+    })
+
+    var arr = Object.getOwnPropertyNames(obj2)
+    console.log(arr)
+
+
+
+
+    var obj1 = {
+        name : "zhangsan",
+        age: 11,
+        sex: "F"
+    }
+
+    var arr = Object.getOwnPropertyNames(obj1)
+    console.log(arr)
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button>A</button>
+    <button>B</button>
+    <button>C</button>
+    <button>D</button>
+    <button>E</button>
+
+    <script>
+        let arr = document.getElementsByTagName("button")
+        console.log(arr)
+        let length = arr.length
+        for(let i=0;i<length;i++)
+        {
+            arr[i].onclick = function(){
+                console.log(i)
+            }
+        }
+
+
+    </script>
+</body>
+</html>

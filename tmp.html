@@ -7,20 +7,23 @@
 <body>
 <script>
 
-    function test1(){
-        var a = 111
-        var b = 222
-
-        function add(x,y){
-            a += x
-            b += y
-            console.log(a,b)
-        }
-
-        return add
+    var obj1 = {
+        name: "zhangsan",
+        age: 11
     }
-    var fun1 = test1()
-    fun1(10,10)
+
+
+
+    let handler = {
+        get: function(obj,prop){
+            return prop in obj ? obj[prop] : `没有 ${prop} 的属性`
+        }
+    }
+
+    const p = new Proxy(obj1,handler)
+    console.log(p.name)
+    console.log(p.age)
+    console.log(p.sex)
 
 
 
