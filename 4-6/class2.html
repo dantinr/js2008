@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //定义一个人类 Person
+    class Person {
+
+        static location = "Beijing"
+
+        //构造方法 实例化时自动调用 完成一些初始化的任务
+        constructor(name,age,sex) {
+            this.name = name
+            this.age = age
+            this.sex = sex
+        }
+        say(){
+            console.log(this.name + "正在说话")
+        }
+    }
+
+    //定义一个子类 Asian 继承 父类 Person
+    class Asian extends Person{
+        constructor(name,age,sex) {
+            super(name,age,sex);
+        }
+
+        cry(){
+            console.log(this.name + "正在哭")
+        }
+    }
+
+    //定义一个类
+    class Chinese extends Asian{
+
+    }
+
+    let p1 = new Chinese("墨子",88,"M")
+    console.log(p1)
+    p1.say()
+    p1.xxx()
+
+
+    let p1 = new Asian("孔子",0,"M")
+    console.log(p1)
+
+    p1.say()
+    p1.cry()
+
+</script>
+</body>
+</html>
