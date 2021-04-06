@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // function Person1(){
+    //
+    // }
+    //
+    // Person1.prototype.name = "noname"
+    // Person1.prototype.sex = "保密"
+    // Person1.prototype.age = 0
+    // Person1.prototype.say = function(){
+    //     console.log("Hello World")
+    // }
+    //
+    // var p1 = new Person1()
+    // console.log(p1.name)
+    // console.log(p1.sex)
+    // console.log(p1.age)
+    // p1.say()
+
+
+    //定义一个人类 Person
+    class Person {
+
+
+        static location = "Beijing"
+
+        //构造方法 实例化时自动调用 完成一些初始化的任务
+        constructor(name,age,sex) {
+            this.name = name
+            this.age = age
+            this.sex = sex
+        }
+
+        say(){
+            console.log(this.name + "正在说话")
+        }
+
+        static cry(){
+            console.log("正在哭")
+        }
+
+        //访问器函数  访问 name属性时调用
+        get name(){
+            console.log("访问了name属性")
+        }
+
+        set name(v){
+            console.log("修改了name属性的值: "+ v)
+        }
+    }
+
+
+    Person.cry()        //类名.静态属性（方法）
+    console.log(Person.location)    //访问类的静态属性
+
+    // let p1 = new Person("zhangsan",0,"M")
+    // let p2 = new Person("lisi",0,"F")
+    //
+    // p1.name
+    // p1.name = "wangwu"
+
+    // p1.say()
+    // p2.say()
+    //
+    // console.log(p1)
+    // console.log(p2)
+    
+
+</script>
+</body>
+</html>

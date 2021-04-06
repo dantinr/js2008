@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+    let obj5 = {
+        age: 11,
+        ["em" + "ail"] : "zhangsan@QQ.COM"
+    }
+    obj5.name = "wangwu"
+    Object.defineProperty(obj5,"sex",{
+        value: "F"
+    })
+
+    //let h = "Hel" + "lo"            //hello
+    obj5["hel"+"lo"] = "Hello world"        // obj5.hello = "Hello world"
+
+    console.log("obj5:" ,obj5)
+
+
+
+
+
+    let name = "zhangsan"
+    let age = 22
+    let say = ()=>{return "Hello Es6"}
+
+    let obj3 = {name,age,say}   //{name:"zhangsan",age:22}
+    console.log(obj3)
+    console.log( obj3.say() )
+
+    let obj4 = {
+        name: "lisi",
+        say: function(){
+            console.log(11111)
+        },
+        say2(){
+            console.log(2222)
+        }
+    }
+
+    obj4.say()
+    // obj4.say2()
+
+
+
+
+
+    // var obj1 = {
+    //     name : "zhangsan",
+    //     age: 11
+    // }
+    //
+    // var obj2 = new Object()
+    // obj2.name = "lisi"
+    // obj2.sex = "F"
+
+
+</script>
+</body>
+</html>
