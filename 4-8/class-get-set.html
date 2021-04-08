@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class A{
+        constructor(name="noname",age=0) {
+            this.name = name
+            this.age = age
+        }
+
+        // 属性 name 的 访问器  get方法
+        get name(){
+            console.log("访问了name属性")
+        }
+
+        set name(v)
+        {
+            console.log("name的新值")
+        }
+
+    }
+
+    const p1 = new A("zhangsan",11);
+    const p2 = new A("lisi",22);
+    const p3 = new A();
+    console.log(p1)
+    console.log(p2)
+    console.log(p3)
+
+
+
+
+</script>
+</body>
+</html>
