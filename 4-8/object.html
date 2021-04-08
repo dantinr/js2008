@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const obj1 = {}
+    //const obj2 = new Object()
+
+    //添加属性
+    obj1.name = "zhangsan"
+    obj1.sex = "Male"
+
+    //通过自定义属性添加
+    Object.defineProperty(obj1,"age",{
+        value: 11,
+        configurable: false,     // 可以被 delete
+        enumerable: false,       // 可枚举
+        writable : true,        // 可修改
+    })
+
+    console.log(obj1)
+
+    //查看对象的原型
+    console.log( "obj1默认的原型： ",Object.getPrototypeOf(obj1) )
+    console.log( Object.getPrototypeOf(obj1) == Object.prototype )
+
+
+    //设置对象的原型 为新的对象
+    Object.setPrototypeOf(obj1,new Person())
+    console.log( "obj1的新原型" ,Object.getPrototypeOf(obj1) )
+
+
+    // 对象的枚举  for in 只能枚举出 可枚举的属性
+    for(k in obj1)
+    {
+        console.log(k)      // k就是对象的属性名
+    }
+
+
+    //判断一个属性是否存在用户对象中   in
+    console.log("name" in obj1)
+    console.log("xxx" in obj1)
+
+    //获取 对象中的所有属性名  Object.keys()  只能获取到 可枚举的属性  返回数组
+    console.log(Object.keys(obj1))
+
+
+    // 获取对象中的 键值对  返回数组
+    console.log(Object.entries(obj1))
+
+    // 获取对象中自有属性 Object.getOwnPropertyNames()
+    console.log(Object.getOwnPropertyNames(obj1))
+
+
+    //定义一个构造函数 Person
+    function Person(){
+
+    }
+    Person.prototype.type = "human"
+    const p1 = new Person()
+    console.log(p1.type)
+
+
+    console.log(111111111111111111111111111)
+    console.log(obj1);
+    Object.setPrototypeOf(obj1,p1)
+    console.log(obj1.type)
+
+    // 获取obj1中的属性  (不包含继承的 构造函数原型上的)
+    console.log(Object.getOwnPropertyNames(obj1))
+
+
+    //删除对象的属性  delete
+    delete obj1.name
+    console.log(obj1)
+    delete obj1.age
+    delete obj1.sex
+
+    console.log("最后的obj1: " ,obj1)
+
+
+
+
+
+</script>
+</body>
+</html>

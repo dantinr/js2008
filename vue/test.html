@@ -25,7 +25,19 @@
                 }
             },
             mounted(){
-                axios.get("http://vue.api.com/combo/list")
+                // const params = new URLSearchParams();
+                // params.append('name',)
+                // params.append('age',11)
+                // params.append('email',"zhangsan@qq.com")
+                // params.append('email',"zhangsan@qq.com")
+                //axios.get("http://vue.api.com/combo/list?page=1&size=10")
+
+                let data = {
+                    name: "zhangsan",
+                    age: 11,
+                    email: "zhangsan@qq.com"
+                }
+                axios.post("http://vue.api.com/liwei/test2",data)
                 .then(response=>{
                     this.list = response.data.data.list
                 })
