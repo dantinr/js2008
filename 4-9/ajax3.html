@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="../jquery-3.5.1.min.js"></script>
+<script>
+    let password = ""
+    $.ajax({
+        url: "http://vue.api.comcto.com/api/password1.php",
+        type:"get",
+        success:function(d){
+            console.log("第 1 位密码" , d)
+            $.ajax({
+                url: "http://vue.api.comcto.com/api/password2.php",
+                type:"get",
+                success:function(d){
+                    console.log("第 2 位密码" , d)
+
+                    $.ajax({
+                        url: "http://vue.api.comcto.com/api/password3.php",
+                        type:"get",
+                        success:function(d){
+                            console.log("第 3 位密码" , d)
+
+                            $.ajax({
+                                url: "http://vue.api.comcto.com/api/password4.php",      // 要请求的接口地址
+                                type:"get",      // 请求方法  get  post ...
+                                success:function(d){     //请求成功之后的 处理函数
+                                    console.log("第 4 位密码" , d)
+                                }
+                            })
+
+                        }
+                    })
+                }
+            })
+        }
+    })
+</script>
+</body>
+</html>

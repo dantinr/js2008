@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  //原生Ajax
+  // 1 实例化  XHR(XMLHttpRequest)
+  let xhr = new XMLHttpRequest()
+
+  // 2 监听状态
+  xhr.onreadystatechange = function(){
+    if(xhr.readyState==4 && xhr.status==200){
+
+      //处理服务器的数据
+      //接收服务器的响应数据
+      let data_str = xhr.responseText
+      console.log(data_str)
+      console.log(typeof data_str)
+    }
+  }
+  // 3 open
+  xhr.open("get","http://vue.api.comcto.com/api/password1.php")
+  // 4 send
+  xhr.send()
+</script>
+</body>
+</html>

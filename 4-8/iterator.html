@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arr1 = [11,22,33]
+    console.log( Array.prototype )
+    Array.prototype.uniq = function(){
+        //TODO 去重
+    }
+
+
+
+
+
+
+
+    // arr1.forEach(function(v,k){
+    //     console.log(k,v)
+    // })
+    //
+    // for (v of arr1){
+    //     console.log(v)
+    // }
+
+    //let arr2 = ["aa","bb","cc"]
+    let s1 = new Set(["aa","bb","cc"])
+    console.log(s1)
+
+    for (v of s1){
+        console.log(v)
+    }
+
+    //定义一个map
+
+    const obj1 = {
+        name: "zhangsan",
+        age: 11
+    }
+
+    const obj2 = {
+        name: "llisi",
+        age : 22
+    }
+
+    let m1 = new Map()
+    m1.set(obj1,"张三");
+    m1.set(obj2,"李四");
+
+    console.log(m1)
+
+
+    console.log(1111111111111)
+    for(v1 of m1){
+        console.log(v1)
+    }
+</script>
+</body>
+</html>

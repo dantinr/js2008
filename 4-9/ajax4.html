@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../jquery-3.5.1.min.js"></script>
+<script>
+
+  //第一次请求
+  $.ajax({
+    url: "http://vue.api.comcto.com/api/password1.php",
+    type: "get",
+    success:function(data){
+      console.log("第 1 位密码: ",data)
+
+      //第二次请求
+      $.ajax({
+        url: "http://vue.api.comcto.com/api/password2.php",
+        type: "get",
+        success:function(data){
+          console.log("第 2 位密码: ",data)
+
+          //第 3 次请求
+          $.ajax({
+            url: "http://vue.api.comcto.com/api/password3.php",
+            type: "get",
+            success:function(data){
+              console.log("第 3 位密码: ",data)
+
+              //第 4 次请求
+              $.ajax({
+                url: "http://vue.api.comcto.com/api/password4.php",
+                type: "get",
+                success:function(data){
+                  console.log("第 4 位密码: ",data)
+                }
+              })
+            }
+          })
+        }
+      })
+    }
+  })
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

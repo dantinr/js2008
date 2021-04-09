@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <script src="../jquery-3.5.1.min.js"></script>
+  <script>
+
+    let password = " "
+
+    $.ajax({
+      url: "http://vue.api.comcto.com/api/password1.php",
+      type: "get",
+      dataType: "json",
+      success: function(d){
+        console.log("第1位: ",d)
+        password +=d
+      }
+    })
+
+    $.ajax({
+      url: "http://vue.api.comcto.com/api/password2.php",
+      type: "get",
+      dataType: "json",
+      success: function(d){
+        console.log("第2位: ",d)
+        password +=d
+      }
+    })
+
+    $.ajax({
+      url: "http://vue.api.comcto.com/api/password3.php",
+      type: "get",
+      dataType: "json",
+      success: function(d){
+        console.log("第3位: ",d)
+        password +=d
+      }
+    })
+
+    $.ajax({
+      url: "http://vue.api.comcto.com/api/password4.php",
+      type: "get",
+      dataType: "json",
+      success: function(d){
+        console.log("第4位: ",d)
+        password +=d
+        console.log(password)
+      }
+    })
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    $.ajax({
+        url: "http://localhost/api.php",
+        type: "post",       // get or post
+        data: {},           // 要发送的数据对象
+        success: function(){}       //请求成功之后的 处理函数
+    })
+
+
+    function ajax(obj){
+        console.log(obj)
+    }
+
+
+    let o = {
+        url: "ssss",
+        type: "get",
+        data: {},
+        success: function(){}
+    }
+    ajax(o)
+</script>
+</body>
+</html>

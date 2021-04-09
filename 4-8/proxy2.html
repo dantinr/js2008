@@ -11,6 +11,7 @@
         age: 11
     }
 
+    //通过Proxy 拦截某些方法  get set defineProperty  deleteProperty
     const p1 = new Proxy(obj1,{
         get(target,property){
             console.log(target)
@@ -21,11 +22,30 @@
             }else{
                 console.log(`${property}属性不存在`)
             }
-        }
-    })
-    p1.name
-    p1.sex
+        },
+        set(target, p, value, receiver) {
 
+        },
+
+        //拦截 defineProperty方法
+        defineProperty: function(target, key, descriptor) {
+            console.log("禁止使用defineProperty方法")
+            return true
+        },
+
+        deleteProperty(target, p) {
+            console.log(`禁止删除${p}属性`)
+            return false
+        }
+
+    })
+
+    delete p1.name          // 删除某个属性
+    Object.defineProperty(p1,"xxx",{        //通过 defineProperty方法自定义属性
+        value: "abcde",
+    })
+
+    console.log(p1)
 </script>
 </body>
 </html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../jquery-3.5.1.min.js"></script>
+<script>
+
+
+  //使用Promise
+  let pass = []
+  const p = new Promise(function(resolve, reject){
+    //第一步
+    $.ajax({
+      url: "http://vue.api.comcto.com/api/password1.php",
+      type: "get",
+      success:function(data){
+        console.log("第 1 位密码: ",data)
+        pass.push(data)
+        resolve(pass)     // 异步操作成功时调用 resolve 函数
+      }
+    })
+  }).then(function (d){
+    //第二步
+    return new Promise(function(resolve, reject){
+      $.ajax({
+        url: "http://vue.api.comcto.com/api/password2.php",
+        type: "get",
+        success:function(data){
+          console.log("第 2 位密码: ",data)
+          pass.push(data)
+          console.log(pass)
+          resolve(pass)
+        }
+      })
+    })
+
+  }).then(function(d){
+    //第三步
+
+    return new Promise(function(resolve, reject){
+      $.ajax({
+        url: "http://vue.api.comcto.com/api/password3.php",
+        type: "get",
+        success:function(data){
+          console.log("第 3 位密码: ",data)
+          pass.push(data)
+          resolve(pass)
+        }
+      })
+    })
+
+  }).then(function(d){
+    //第 4 步
+    return new Promise(function(resolve, reject){
+      $.ajax({
+        url: "http://vue.api.comcto.com/api/password4.php",
+        type: "get",
+        success:function(data){
+          console.log("第 4 位密码: ",data)
+          pass.push(data)
+          resolve(pass)
+        }
+      })
+    })
+  }).then(function (d){
+    console.log("最终密码: ",d)
+  })
+
+</script>
+</body>
+</html>
