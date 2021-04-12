@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+  let obj1 = {
+    name: "zhangsan",
+    age: 11,
+    sex: "Male"
+  }
+
+  console.log(Object.entries(obj1))
+
+
+  function * it()
+  {
+    //获取对象的键值对
+    const entries = Object.entries(this)
+
+    for (v of entries){
+      yield v
+    }
+  }
+
+  const proto1 = Object.getPrototypeOf(obj1)
+  proto1[Symbol.iterator] = it
+
+  for (let v of obj1){
+    console.log(v)
+  }
+
+
+
+
+
+
+  // function * it(){
+  //   yield '111'
+  //   yield '222'
+  //   yield '333'
+  // }
+  //
+  //
+  // let obj1 = {
+  //   name: "zhangsan",
+  //   age: 11,
+  //   sex: "Male"
+  // }
+  // const proto1 = Object.getPrototypeOf(obj1)
+  // proto1[Symbol.iterator] = it
+  //
+  // console.log(obj1)
+  //
+  // for (v of obj1){
+  //   console.log(v)
+  // }
+
+
+
+
+
+ // console.log(Array.prototype)
+
+
+  // function hello1()
+  // {
+  //   console.log(11111)
+  // }
+  //
+  //
+  // hello1()    // 11111
+
+
+  // function * hello2()
+  // {
+  //   yield "Hello"
+  //   yield "world"
+  //   return "Es6"
+  // }
+  //
+  //
+  // const g1 = hello2()
+  // console.log( g1.next() )      // 返回一个对象  包含 值 和 done(true|false)
+  // console.log( g1.next() )
+  // console.log( g1.next() )
+
+
+
+</script>
+</body>
+</html>

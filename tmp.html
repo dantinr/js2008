@@ -18,50 +18,54 @@ D <input type="checkbox" name="foo">
 <script src="jquery-3.5.1.min.js"></script>
 <script>
 
-    let p = new Promise(function(resolve,reject){
+    function pass1(){
         $.ajax({
             url: "http://vue.api.comcto.com/api/password1.php",      // 要请求的接口地址
             type:"get",      // 请求方法  get  post ...
             success:function(d){     //请求成功之后的 处理函数
                 console.log("第 1 位密码" , d)
-                resolve(d)
+                return d
             }
         })
-    }).then(function(){
-        return new Promise(function(resolve, reject){
-            $.ajax({
-                url: "http://vue.api.comcto.com/api/password2.php",      // 要请求的接口地址
-                type:"get",      // 请求方法  get  post ...
-                success:function(d){     //请求成功之后的 处理函数
-                    console.log("第 2 位密码" , d)
-                    resolve(d)
-                }
-            })
-        })
-    }).then(function(){
-        return new Promise(function(resolve, reject){
-            $.ajax({
-                url: "http://vue.api.comcto.com/api/password3.php",      // 要请求的接口地址
-                type:"get",      // 请求方法  get  post ...
-                success:function(d){     //请求成功之后的 处理函数
-                    console.log("第 3 位密码" , d)
-                    resolve(d)
-                }
-            })
-        })
-    }).then(function(){
-        return new Promise(function(resolve, reject){
-            $.ajax({
-                url: "http://vue.api.comcto.com/api/password4.php",      // 要请求的接口地址
-                type:"get",      // 请求方法  get  post ...
-                success:function(d){     //请求成功之后的 处理函数
-                    console.log("第 4 位密码" , d)
-                    resolve(d)
-                }
-            })
-        })
-    })
+    }
 
+
+    function pass2(){
+        $.ajax({
+            url: "http://vue.api.comcto.com/api/password2.php",      // 要请求的接口地址
+            type:"get",      // 请求方法  get  post ...
+            success:function(d){     //请求成功之后的 处理函数
+                console.log("第 2 位密码" , d)
+                return d
+            }
+        })
+    }
+
+    function pass3(){
+        $.ajax({
+            url: "http://vue.api.comcto.com/api/password3.php",      // 要请求的接口地址
+            type:"get",      // 请求方法  get  post ...
+            success:function(d){     //请求成功之后的 处理函数
+                console.log("第 3 位密码" , d)
+                return d
+            }
+        })
+    }
+
+    // pass1()
+    // pass2()
+    // pass3()
+
+
+    async function hello()
+    {
+        console.log(111111111111)
+        await pass1()
+        await pass2()
+        await pass3()
+    }
+
+    console.log( hello() )
 
 
 </script>

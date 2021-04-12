@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+  <div id="app">
+    <button>点击1</button>
+    <button v-on:click="hello">点击2</button>
+  </div>
+
+
+  <script src="../vue.2.6.12.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      methods: {
+        hello(){
+          alert("Hello")
+        }
+      }
+    })
+
+  //   document.querySelector("button").onclick = function(){
+  //     alert(1111)
+  //   }
+  //
+  // document.getElementsByTagName("button")[0].addEventListener("click",function(){
+  //   alert(22222)
+  // })
+  </script>
+</body>
+</html>

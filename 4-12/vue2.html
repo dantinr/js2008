@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+  <input type="text" v-model="num1">
+  <button> + </button>
+  <input type="text" v-model="num2"> <br>
+  <button v-on:click="calc">=</button>
+  <br>
+  <input type="text" v-model="num3">
+</div>
+
+
+<script src="../vue.2.6.12.js"></script>
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      num1: 0,
+      num2: 0,
+      num3: 0,
+    },
+    methods: {
+      calc(){
+        this.num3 = parseInt(this.num1) + parseInt(this.num2)
+      }
+    }
+  })
+</script>
+</body>
+</html>

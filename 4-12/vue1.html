@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+        div {width: 100px;height: 100px;border: 1px solid black}
+
+        .style1 {
+            background-color: red;
+        }
+
+        .style2 {
+            background-color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+<div id="app">
+    <div v-bind:class="class2"></div>
+</div>
+
+<script>
+
+</script>
+
+<script src="../vue.2.6.12.js"></script>
+
+<script>
+    let app = new Vue({
+        el: "#app",         // 容器ID 挂载点
+        data: {
+            msg: "Hello world",
+            class2:{
+                style1: true,
+                style2: true
+            }
+        }
+    })
+</script>
+</body>
+</html>

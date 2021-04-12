@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <img v-bind:src="erha" v-bind:title="erhatile">
+  </div>
+
+  <script src="../vue.2.6.12.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data:{
+        erha: "../timg.png",
+        erhatile: "哈士奇"
+      },
+    })
+  </script>
+</body>
+</html>
