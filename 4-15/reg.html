@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+  用户名： <input type="text" v-model.lazy="username"> <br>
+  Email: <input type="text" v-model="useremail"> <br>
+  手机号： <input type="text" v-model="usermobile"> <br>
+
+  <span>{{tip}}</span>
+</div>
+
+<script src="../vue.2.6.12.js"></script>
+<script>
+  new Vue({
+    el: "#app",
+
+    data: {
+      username: null,
+      useremail: null,
+      usermobile: null,
+      tip:""
+    },
+    methods: {
+
+    },
+
+    watch: {
+      username(){
+        console.log()
+      }
+    }
+  })
+</script>
+</body>
+</html>

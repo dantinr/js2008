@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <blog-post v-bind:aaa="hello"></blog-post>
+  </div>
+
+  <script src="../vue.2.6.12.js"></script>
+  <script>
+
+    Vue.component("blog-post",{
+      props: ['aaa'],
+      template: "<h3>{{ aaa }}</h3>"
+    })
+
+    new Vue({
+      el: "#app",
+      data: {
+        hello: "Hello world11111"
+      }
+    })
+
+  </script>
+</body>
+</html>

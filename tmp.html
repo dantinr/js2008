@@ -5,69 +5,28 @@
     <title>Title</title>
 </head>
 <body>
+    <div id="app">
+        <hello-world></hello-world>
+    </div>
 
 
-A <input type="checkbox" name="foo">
-B <input type="checkbox" name="foo">
-C <input type="checkbox" name="foo">
-D <input type="checkbox" name="foo">
+    <script src="vue.2.6.12.js"></script>
+    <script>
 
-<button id="btn1">全选</button>
-<button id="btn2">全不选</button>
+        Vue.component("hello-world",{
+            data: function(){
+                return {
+                    msg: "春天来了"
+                }
+            },
 
-<script src="jquery-3.5.1.min.js"></script>
-<script>
-
-    function pass1(){
-        $.ajax({
-            url: "http://vue.api.comcto.com/api/password1.php",      // 要请求的接口地址
-            type:"get",      // 请求方法  get  post ...
-            success:function(d){     //请求成功之后的 处理函数
-                console.log("第 1 位密码" , d)
-                return d
-            }
+            template:"<h2>{{msg}}</h2>"
         })
-    }
 
-
-    function pass2(){
-        $.ajax({
-            url: "http://vue.api.comcto.com/api/password2.php",      // 要请求的接口地址
-            type:"get",      // 请求方法  get  post ...
-            success:function(d){     //请求成功之后的 处理函数
-                console.log("第 2 位密码" , d)
-                return d
-            }
+        new Vue({
+            el: "#app",
         })
-    }
 
-    function pass3(){
-        $.ajax({
-            url: "http://vue.api.comcto.com/api/password3.php",      // 要请求的接口地址
-            type:"get",      // 请求方法  get  post ...
-            success:function(d){     //请求成功之后的 处理函数
-                console.log("第 3 位密码" , d)
-                return d
-            }
-        })
-    }
-
-    // pass1()
-    // pass2()
-    // pass3()
-
-
-    async function hello()
-    {
-        console.log(111111111111)
-        await pass1()
-        await pass2()
-        await pass3()
-    }
-
-    console.log( hello() )
-
-
-</script>
+    </script>
 </body>
 </html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <button-counter></button-counter>
+  </div>
+
+  <script src="../vue.2.6.12.js"></script>
+  <script>
+
+    //创建组件
+    Vue.component('button-counter',{
+      data: function(){
+        return {
+          counter: 123
+        }
+      },
+      template: "<button v-on:click='add'> {{counter}} </button>",
+      methods:{
+        add(){
+          this.counter++
+        }
+      }
+    })
+
+    new Vue({
+      el: "#app",
+      methods:{
+      }
+    })
+
+  </script>
+</body>
+</html>

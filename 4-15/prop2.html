@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div id="app">
+
+          <book-list v-bind:booklist="list"></book-list>
+
+  </div>
+  <script src="../vue.2.6.12.js"></script>
+  <script>
+
+      Vue.component("book-list",{
+          props:['booklist'],
+          template: `<ul><li v-for="item in booklist">{{item.id}}--{{item.name}}</li></ul>`
+      })
+
+
+      new Vue({
+          el: "#app",
+          data: {
+              list:[
+                  {
+                      id: 1234,
+                      name: "西游记"
+                  },
+                  {
+                      id: 1235,
+                      name: "东游记"
+                  },
+                  {
+                      id: 1236,
+                      name: "西厢记"
+                  },
+              ]
+          }
+      })
+
+  </script>
+</body>
+</html>
