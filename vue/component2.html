@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <menu-item title="来自父组件的数据"></menu-item>
+    <menu-item v-bind:title="title"></menu-item>
+</div>
+
+<script src="../vue.js"></script>
+<script>
+
+
+
+    Vue.component('menu-item',{
+        props: ['title'],
+        template: "<div>{{title}}</div>"
+    })
+
+    new Vue({
+        el: "#app",
+        data:{
+            title: "AAAA"
+        },
+    })
+</script>
+</body>
+</html>
