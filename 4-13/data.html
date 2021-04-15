@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="item in list">
+        {{item.id}} - {{item.name}} - {{item.price}}
+      </li>
+    </ul>
+  </div>
+  <script src="../vue.2.6.12.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        list:[
+          {id:1001,name:"葵花宝典",price:"$1000.00"},
+          {id:1002,name:"六脉神剑",price:"$2000.00"},
+          {id:1003,name:"凌波微步",price:"$3000.00"},
+        ]
+      },
+
+    })
+  </script>
+</body>
+</html>

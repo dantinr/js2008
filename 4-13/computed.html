@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <div id="example">
+      <p>{{ message }}</p>
+      <p>{{ hello }}</p>
+    </div>
+  </div>
+
+  <script src="../vue.2.6.12.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        message: "a#b#c#d#e"
+      },
+
+      methods: {
+        hello2(){
+
+        }
+      },
+      computed: {
+        hello(){
+          //console.log(this.message.split("#").reverse().join())
+          return this.message.split("#").reverse().join("")
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -35,17 +35,18 @@
     <div class="grid">
       <div>
         <h1>图书管理</h1>
+        <button @click="del(2)">删除</button>
         <div class="book">
           <div>
             <label for="id">
               编号：
             </label>
-            <input type="text" id="id" v-model='id' :disabled="flag">
+            <input type="text" id="id" v-model="id">
             <label for="name">
               名称：
             </label>
-            <input type="text" id="name" v-model='name'>
-            <button @click='handle'>提交</button>
+            <input type="text"  id="name" v-model="name">
+            <button @click="add" >提交</button>
           </div>
         </div>
       </div>
@@ -59,14 +60,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr :key='item.id' v-for='item in books'>
+          <tr :key='item.id' v-for='(item,index) in books'>
             <td>{{item.id}}</td>
             <td>{{item.name}}</td>
-            <td>{{item.date}}</td>
+            <td>{{item.time}}</td>
             <td>
-              <a href="" @click.prevent='toEdit(item.id)'>修改</a>
+              <a href="">修改</a>
               <span>|</span>
-              <a href="" @click.prevent='deleteBook(item.id)'>删除</a>
+              <a href="" @click.prevent="del(index)">删除</a>
             </td>
           </tr>
         </tbody>
@@ -74,36 +75,47 @@
     </div>
   </div>
   <script type="text/javascript" src="../vue.js"></script>
+  <script src="../axios.min.js"></script>
   <script type="text/javascript">
     /*
       图书管理-添加图书
     */
+    //接口地址
+    const api_url = "http://vue.api.comcto.com/api/books.php"
     var vm = new Vue({
       el: '#app',
       data: {
-        flag: false,
-        id: '',
-        name: '',
-        books: [{
-          id: 1,
-          name: '三国演义',
-          date: ''
-        },{
-          id: 2,
-          name: '水浒传',
-          date: ''
-        },{
-          id: 3,
-          name: '红楼梦',
-          date: ''
-        },{
-          id: 4,
-          name: '西游记',
-          date: ''
-        }]
+        id: null,
+        name:null,
+        books: []
       },
       methods: {
+        //添加
+        add(){
+          //获取input中的 id 和 name
+          let now = new Date()
+          let y = now.getFullYear()   //获取年
+          let m = now.getMonth()
+          let d = now.getDate()
+          let ymd = `${y}-${m+1}-${d}`
+          let new_book = {id:this.id,name:this.name,time:ymd}
+          this.books.push(new_book)
+          console.log("添加")
+        },
 
+        del(index){
+          console.log("删除")
+          this.books.splice(index,1)
+          //this.books.shift()
+          //this.books.pop()
+        }
+      },
+
+      created(){
+        let self = this
+        axios.get(api_url).then(function(response){
+          self.books = response.data
+        })
       }
     });
   </script>

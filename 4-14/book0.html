@@ -6,27 +6,49 @@
   <style type="text/css">
     .grid {
       margin: auto;
-      width: 500px;
+      width: 530px;
       text-align: center;
     }
     .grid table {
+      border-top: 1px solid #C2D89A;
       width: 100%;
       border-collapse: collapse;
     }
     .grid th,td {
       padding: 10;
-      border: 1px dashed orange;
+      border: 1px dashed #F3DCAB;
       height: 35px;
       line-height: 35px;
     }
     .grid th {
-      background-color: orange;
+      background-color: #F3DCAB;
+    }
+    .grid .book {
+      padding-bottom: 10px;
+      padding-top: 5px;
+      background-color: #F3DCAB;
     }
   </style>
 </head>
 <body>
   <div id="app">
     <div class="grid">
+      <div>
+        <h1>图书管理</h1>
+        <div class="book">
+          <div>
+            <label for="id">
+              编号：
+            </label>
+            <input type="text" id="id">
+            <label for="name">
+              名称：
+            </label>
+            <input type="text" id="name">
+            <button >提交</button>
+          </div>
+        </div>
+      </div>
       <table>
         <thead>
           <tr>
@@ -42,9 +64,9 @@
             <td>{{item.name}}</td>
             <td>{{item.date}}</td>
             <td>
-              <a href="" @click.prevent>修改</a>
+              <a href="">修改</a>
               <span>|</span>
-              <a href="" @click.prevent>删除</a>
+              <a href="">删除</a>
             </td>
           </tr>
         </tbody>
@@ -52,32 +74,17 @@
     </div>
   </div>
   <script type="text/javascript" src="../vue.js"></script>
+  <script src="../axios.min.js"></script>
   <script type="text/javascript">
     /*
-      图书管理-图书列表展示功能
-      注意事项：<a href="" @click.prevent>修改</a>
-      事件绑定时，可以只添加修饰符，而不绑定事件函数
+      图书管理-添加图书
     */
     var vm = new Vue({
       el: '#app',
       data: {
-        books: [{
-          id: 1,
-          name: '三国演义',
-          date: ''
-        },{
-          id: 2,
-          name: '水浒传',
-          date: ''
-        },{
-          id: 3,
-          name: '红楼梦',
-          date: ''
-        },{
-          id: 4,
-          name: '西游记',
-          date: ''
-        }]
+        books: []
+      },
+      methods: {
       }
     });
   </script>
