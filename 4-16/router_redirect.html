@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+  <div id="app">
+    <h3>Hello World</h3>
+  </div>
+
+  <script src="../vue.js"></script>
+  <script src="../vue-router.3.5.1.js"></script>
+  <script>
+
+      //定义一个组件 abc
+      const reg = {
+        template: "<h1>注册页面</h1>"
+      }
+
+      //定义一个组件 xyz
+      const login = {
+        template: "<h1>登录页面</h1>"
+      }
+
+      //路由与组件的映射(路由规则)
+      const routes = [
+        {path:"/",redirect: "/reg"},      //路由重定向
+        {path:"/reg",component:reg},
+        {path:"/login",component:login},
+      ]
+
+      //创建路由的实例
+      const router = new VueRouter({
+        routes
+      })
+
+      new Vue({
+        el: "#app",
+        router,     //挂在路由
+      })
+
+  </script>
+
+</body>
+</html>
