@@ -88,9 +88,26 @@
 <body>
 <div id="app">
   <div class="container">
-    <div class="cart">
-      <div class="title">我的购物车</div>
-      <div>
+    <my-cart></my-cart>
+  </div>
+</div>
+
+<script src="/vue.2.6.12.js"></script>
+<script>
+
+
+
+  //购物车头部 组件
+  var CartTitle = {
+    template: `
+    <div class="title">我的购物车</div>
+    `
+  }
+
+  //购物车列表 组件
+  var CartList = {
+    template: `
+    <div>
         <div class="item">
           <img src="img/a.jpg"/>
           <div class="name"></div>
@@ -142,14 +159,38 @@
           <div class="del">×</div>
         </div>
       </div>
-      <div class="total">
+    `
+  }
+
+  // 购物车底部 组件
+  var CartFooter = {
+    template: `
+     <div class="total">
         <span>总价：123</span>
         <button>结算</button>
       </div>
-    </div>
-  </div>
-</div>
+    `
+  }
 
+  Vue.component("my-cart",{
+    template: `
+      <div class="cart">
+        <cart-title></cart-title>
+        <cart-list></cart-list>
+        <cart-footer></cart-footer>
+      </div>
+    `,
+    components:{
+      "cart-title" : CartTitle,
+      "cart-list"  : CartList,
+      "cart-footer": CartFooter
+    }
+  })
+
+  new Vue({
+    el: "#app",
+
+  })
 </script>
 </body>
 </html>
