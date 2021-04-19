@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+  <div id="app">
+
+    <router-link to="/user/1">用户1</router-link>
+    <router-link to="/user/2">用户2</router-link>
+    <router-link to="/user/3">用户3</router-link>
+
+    <router-view></router-view>
+  </div>
+
+  <script src="../vue.js"></script>
+  <script src="../vue-router.3.5.1.js"></script>
+  <script>
+
+
+    const User1 = {
+      template: `<p>张三</p>`
+    }
+
+    const User2 = {
+      template: `<p>李四</p>`
+    }
+
+    const User3 = {
+      template: `<p>王五</p>`
+    }
+
+
+    const UserX = {
+      template: `<p>用户ID: {{$route.params.id}}</p>`
+    }
+
+
+    const routes = [
+      {path:"/user/:id",component:UserX}
+    ]
+
+    const router = new VueRouter({
+      routes
+    })
+
+    new Vue({
+      el: "#app",
+      router:router,
+    })
+
+  </script>
+
+</body>
+</html>
