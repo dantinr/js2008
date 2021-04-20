@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div id="app">
+
+    <router-link :to="{name:'ureg'}">注册</router-link>
+    <router-link :to="{name:'ulogin'}">登录</router-link>
+
+    <router-view></router-view>
+  </div>
+
+
+  <script src="/js/vue.2.6.12.min.js"></script>
+  <script src="/js/vue-router.3.5.1.js"></script>
+
+  <script>
+    const UserReg = {
+      template:`<div>
+            <h2>用户注册</h2>
+            <button @click="goHome">首页</button>
+</div>
+      `,
+      methods:{
+        goHome(){
+          this.$router.push("/user/home")
+        }
+      }
+    }
+
+    const UserHome = {
+      template: `
+        <div>
+            <h2>用户首页</h2>
+</div>
+      `
+    }
+
+    const UserLogin = {
+      template:`
+        <div>
+          <h3>用户登录111</h3>
+          <button @click="goBack">返回</button>
+        </div>
+      `,
+      methods:{
+        goBack(){
+          this.$router.go(-1)
+        }
+      }
+    }
+
+    const routes = [
+      {path:"/user/home",component:UserHome},
+      {path:"/user/reg",name:"ureg",component:UserReg},
+      {path:"/user/login",name:"ulogin",component:UserLogin},
+    ]
+
+    const router = new VueRouter({routes})
+    new Vue({
+      el: "#app",
+      router:router,
+    })
+  </script>
+
+</body>
+</html>

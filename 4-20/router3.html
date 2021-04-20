@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div id="app">
+
+    <router-link to="/user/reg">注册</router-link>
+    <router-link :to="{name:'ulogin'}">登录</router-link>
+
+    <router-view></router-view>
+  </div>
+
+  <script src="/js/vue.2.6.12.js"></script>
+  <script src="/js/vue-router.3.5.1.js"></script>
+  <script>
+
+    //定义组件
+    // 首页组件
+    const UserHome = {
+      template:`<div>
+    <h1>用户主页</h1>
+</div>`
+    }
+
+    const UserReg = {
+      template:`<div>
+    <h3>用户注册</h3>
+    <button @click="goBack">返回上一页</button>
+</div>`,
+      methods:{
+        goBack(){
+          this.$router.go(-1)
+        }
+      }
+    }
+
+    const UserLogin = {
+      template:`<div>
+    <h3>用户登录</h3>
+    <button @click="goHome">去首页</button>
+</div>`,
+      methods:{
+        goHome(){
+          this.$router.push("/user/home")
+        }
+      }
+    }
+
+    // 路由与组件的映射关系
+    const routes = [
+      {path:"/user/home",name:"ureg",component:UserHome},
+      {path:"/user/reg",name:"ureg",component:UserReg},
+      {path:"/user/login",name:"ulogin",component:UserLogin},
+    ]
+
+    //实例化 VueRouter
+    const r = new VueRouter({routes})
+
+    new Vue({
+      el: "#app",
+      router:r
+    })
+
+  </script>
+
+</body>
+</html>

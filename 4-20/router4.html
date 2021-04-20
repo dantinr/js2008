@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <router-link to="/user/login">登录</router-link>
+    <router-link to="/user/reg">注册</router-link>
+    <router-view></router-view>
+  </div>
+
+  <script src="/js/vue.2.6.12.js"></script>
+  <script src="/js/vue-router.3.5.1.js"></script>
+  <script>
+
+
+    const UserLogin = {
+      template:`<div> <h3>用户登录</h3> </div>`
+    }
+
+    const UserReg = {
+      template:`<div> <h3>用户注册</h3>
+        <router-link to="/reg/mobile">手机注册</router-link>
+        <router-link to="/reg/email">Email注册</router-link>
+        <router-view></router-view>
+</div>`
+    }
+
+    //手机注册
+    const RegMobile = {
+      template:`<div> <input type="text" placeholder="请输入手机号"> </div>`
+    }
+
+    const RegEmail = {
+      template:`<div> <input type="text" placeholder="请输入Email"> </div>`
+    }
+
+    const NotFound = {
+      template:`
+        <div><img src="/img/404.png" alt=""></div>
+      `
+    }
+
+    //规则映射
+    const routes = [
+      {path:"/",redirect: '/user/login'},
+      {path:"/user/login",component:UserLogin},
+      {path:"/user/reg",component:UserReg,
+        children:[      //嵌套的路由
+          {path:"/reg/mobile",component:RegMobile},
+          {path:"/reg/email",component:RegEmail},
+        ]},
+      {path:'/404',component: NotFound},
+      {path:"*",redirect:"/404"}
+    ]
+
+    const router = new VueRouter({routes})
+
+    new Vue({
+      el: '#app',
+      router:router
+    })
+
+  </script>
+
+</body>
+</html>

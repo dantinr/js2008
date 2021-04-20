@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div id="app">
+
+    <router-link to="/user/1">张三</router-link>
+    <router-link to="/user/2">李四</router-link>
+    <router-link to="/user/3">王五</router-link>
+
+    <router-view></router-view>
+  </div>
+
+
+  <script src="/js/vue.2.6.12.min.js"></script>
+  <script src="/js/vue-router.3.5.1.js"></script>
+
+  <script>
+    const UserX = {
+      props:['id','name','age'],
+      template: `<div> {{id}} - {{name}} - {{age}} 的个人信息</div>`
+    }
+    // const User2 = {
+    //   template: `<div>李四的个人信息</div>`
+    // }
+    // const User3 = {
+    //   template: `<div>王五的个人信息</div>`
+    // }
+
+    // 定义规则（路由与组件的映射关系）
+    const routes = [
+      {path:"/user/:id",component:UserX,
+        props:route=>({id:route.params.id,name:"zhangsan",age:11})
+      },
+      //{path:"/",redirect:"/user/1"},
+      // {path:"/user/1",component:User1},
+      // {path:"/user/2",component:User2},
+      // {path:"/user/3",component:User3},
+
+    ]
+
+    //实例化 VueRouter
+    const router = new VueRouter({
+      routes: routes
+    })
+
+    // 实例化 Vue
+    const app = new Vue({
+      el: "#app",
+      router:router,
+    })
+  </script>
+
+</body>
+</html>
