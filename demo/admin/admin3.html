@@ -100,10 +100,6 @@
       th {
         background-color: #ddd;
       }
-
-      .user-edit {
-        margin: 30px
-      }
     </style>
   </head>
   <body>
@@ -156,23 +152,21 @@
         <router-view :key="new Date().getMilliseconds()"></router-view>
         <table>
           <thead>
-          <tr><th>编号</th><th>姓名</th><th>Email</th><th>手机号</th><th>操作</th></tr>
+          <tr><th>编号</th><th>姓名</th><th>年龄</th><th>操作</th></tr>
           </thead>
           <tbody>
-          <tr v-for="(item,key) in userList" :key="item.user_id">
+          <tr v-for="item in userList" :key="item.user_id">
             <td>{{item.user_id}}</td>
             <td>{{item.user_name}}</td>
             <td>{{item.email}}</td>
-            <td>{{item.mobile}}</td>
             <td>
               <a href="javascript:;" @click="goDetail(item.user_id)">详情</a> |
-              <a href="javascript:;">删除</a> |
+              <a href="javascript:;" @click="deleteUser(item.user_id)">删除</a> |
               <router-link :to="{path:'/edit/'+item.user_id}">编辑</router-link>
             </td>
           </tr>
           </tbody>
         </table>
-
         </div>`,
 
         created(){
@@ -188,9 +182,21 @@
           },
           //用户详情
           goDetail(userid){
+            console.log(userid)
             //切换路由
             this.$router.push("/userDetail/"+userid)
           },
+          //删除用户
+          deleteUser(uid){
+            console.log(uid)
+            //请求接口
+            let self = this
+            axios.get("http://api.2008.com/user/delete?uid="+uid).then(function(res){
+              console.log("删除用户")
+              console.log(res.data)
+              self.getUserList()    //调用父级用户列表接口
+            })
+          }
         }
       }
 
@@ -225,45 +231,50 @@
         }
       }
 
-      //编辑用户
+      //用户编辑
       const EditUser = {
-        props:['uid'],
+        props: ['uid'],
         data(){
           return {
-            userinfo: {}
+            userinfo:{}
           }
         },
-        template:`
-        <div class="user-edit"> <h3>{{uid}}用户编辑</h3>
-        用户ID: <input type="text" disabled :value="userinfo.user_id"> <br>
-        用户名：<input type="text" v-model="userinfo.user_name"> <br>
-        Email：<input type="text" v-model="userinfo.email"> <br>
-        手机号：<input type="text" v-model="userinfo.mobile"> <br><br>
-        <button @click="updateUser()">提交修改</button>
-        <button @click="goBack">返回</button>
-        </div>
-
+        template: `
+          <div>
+            <h3>{{uid}}修改用户信息</h3>
+              用户ID: <input type="text" disabled v-model="userinfo.user_id"> <br>
+              用户名： <input type="text" v-model="userinfo.user_name"> <br>
+              Email： <input type="text" v-model="userinfo.email"> <br>
+              手机号： <input type="text" v-model="userinfo.mobile"> <br><br>
+              <button @click="editUser"> 提交修改 </button>
+              <button @click="goBack"> 返回 </button>
+          <br><br>
+          </div>
         `,
-        mounted(){
+        created(){
+          console.log("用户ID: ",this.uid)
           let self = this
+          //请求接口获取用户信息
           axios.get("http://api.2008.com/user/detail?uid="+this.uid).then(function(res){
             self.userinfo = res.data.data.u
           })
         },
+
         methods:{
-          updateUser(){
+          editUser(){     //当用户点击修改的时候，获取 表单中的数据 并post给接口
+            console.log("修改过后的用户信息：",this.userinfo)
             let self = this
-            console.log(this.userinfo)
             axios.post("http://api.2008.com/user/update",this.userinfo).then(function(res){
-              console.log(res)
-              self.$parent.getUserList()      //调用父组件的方法
-              //self.$router.push('/users')
+              console.log(res.data)
+              //调用父组件的  获取用户列表接口
+              self.$parent.getUserList()
             })
           },
-          goBack(){   //返回
+          //返回列表页
+          goBack() {
             this.$router.push('/users')
           }
-        },
+        }
 
       }
 
@@ -272,7 +283,7 @@
       const routes = [
         {path: "/",component:App,children:[
             {path:'/users',component: Users,children:[
-                {path:'/edit/:uid',component:EditUser,props:true}
+                {path:"/edit/:uid",component:EditUser,props:true}
               ]},
             {path:'/privs',component: Privs},
             {path:'/goods',component: Goods},
