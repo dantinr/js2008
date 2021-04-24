@@ -10,22 +10,19 @@
     </div>
 
 
-    <script src="vue.2.6.12.js"></script>
+    <script src="/js/vue.2.6.12.js"></script>
+    <script src="/js/axios.min.js"></script>
     <script>
 
-        Vue.component("hello-world",{
-            data: function(){
-                return {
-                    msg: "春天来了"
-                }
-            },
+        var api_url = "http://localhost:8080/user/list"
 
-            template:"<h2>{{msg}}</h2>"
-        })
+        async function getList(id)
+        {
+            const info1 =  await axios.get('/url1')
+            const info2 =  await axios.get('/url2' + info1.data)
+            return info2
+        }
 
-        new Vue({
-            el: "#app",
-        })
 
     </script>
 </body>
